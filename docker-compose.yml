@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  contractiq-db:
+    image: pgvector/pgvector:pg17
+    container_name: contractiq-db
+    environment:
+      POSTGRES_DB: contractiq_db
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev123
+    ports:
+      - "5432:5432"
+    volumes:
+      - contractiq_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  contractiq_data: {}
