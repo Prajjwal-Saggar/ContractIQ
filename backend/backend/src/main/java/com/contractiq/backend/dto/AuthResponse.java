@@ -1,0 +1,23 @@
+package com.contractiq.backend.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class AuthResponse {
+
+    private String token;
+    private String name;
+    private String email;
+    private String role;
+    private String message;
+
+    // tells frontend whether to show OTP screen or dashboard
+    private boolean verified;
+    private String nextStep; // "VERIFY_OTP" or "LOGIN_SUCCESS"
+}

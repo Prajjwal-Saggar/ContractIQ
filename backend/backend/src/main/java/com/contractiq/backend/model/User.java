@@ -3,6 +3,8 @@ package com.contractiq.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -27,4 +29,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    // is this account verified via OTP
+    @Column(nullable = false)
+    private boolean verified = false;
+
+    // the OTP code — 6 digits
+    private String otpCode;
+
+    // when the OTP expires — 10 minutes from generation
+    private LocalDateTime otpExpiresAt;
 }
