@@ -6,7 +6,7 @@ target/
 # Secrets
 .env
 application.properties
-
+embedding-service/.env
 # Python
 __pycache__/
 *.pyc

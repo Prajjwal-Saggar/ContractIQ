@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   contractiq-db:
     image: pgvector/pgvector:pg17
     container_name: contractiq-db
@@ -12,6 +13,20 @@ services:
       - "5432:5432"
     volumes:
       - contractiq_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  embedding-service:
+    build:
+      context: ./embedding-service
+      dockerfile: Dockerfile
+    container_name: contractiq-embedding
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      EMBEDDING_MODEL: models/text-embedding-004
+      CHUNK_SIZE: 500
+      CHUNK_OVERLAP: 50
+    ports:
+      - "8000:8000"
     restart: unless-stopped
 
 volumes:
