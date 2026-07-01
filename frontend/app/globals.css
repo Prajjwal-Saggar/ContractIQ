@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/* =========================================================
+   CONTRACTIQ — CYBER BRUTALISM DESIGN SYSTEM
+   ========================================================= */
+
+@theme inline {
+  /* Colors */
+  --color-bg:              #F5F5F0;
+  --color-surface:         #FFFFFF;
+  --color-surface-dark:    #0A0A0A;
+  --color-primary:         #7B5EA7;
+  --color-accent:          #C8FF00;
+  --color-text:            #0A0A0A;
+  --color-text-secondary:  #555550;
+  --color-text-muted:      #999990;
+  --color-border:          #0A0A0A;
+  --color-border-light:    #E0E0D8;
+  --color-error:           #FF3333;
+  --color-success:         #00FF88;
+  --color-warning:         #FF9900;
+
+  /* Fonts */
+  --font-display: var(--font-bebas);
+  --font-grotesk: var(--font-grotesk-var);
+  --font-mono:    var(--font-mono-var);
+  --font-ibm:     var(--font-ibm-var);
+}
+
+/* CSS Variables for runtime access */
+:root {
+  --bg:              #F5F5F0;
+  --surface:         #FFFFFF;
+  --surface-dark:    #0A0A0A;
+  --primary:         #7B5EA7;
+  --accent:          #C8FF00;
+  --text:            #0A0A0A;
+  --text-secondary:  #555550;
+  --text-muted:      #999990;
+  --border:          #0A0A0A;
+  --border-light:    #E0E0D8;
+  --error:           #FF3333;
+  --success:         #00FF88;
+  --warning:         #FF9900;
+}
+
+/* =========================================================
+   BASE RESET & GLOBAL STYLES
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+}
+
+body {
+  background-color: #F5F5F0;
+  color: #0A0A0A;
+  font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Remove default button styles */
+button {
+  cursor: crosshair;
+  font-family: inherit;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Input reset */
+input, textarea, select {
+  font-family: inherit;
+  outline: none;
+}
+
+/* =========================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================= */
+
+.font-display  { font-family: var(--font-bebas), 'Bebas Neue', cursive; }
+.font-grotesk  { font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif; }
+.font-mono     { font-family: var(--font-mono-var), 'Space Mono', monospace; }
+.font-ibm      { font-family: var(--font-ibm-var), 'IBM Plex Mono', monospace; }
+
+/* Section numbers */
+.section-tag {
+  font-family: var(--font-mono-var), 'Space Mono', monospace;
+  font-size: 11px;
+  color: #7B5EA7;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Uppercase labels */
+.label-upper {
+  font-family: var(--font-mono-var), 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #999990;
+}
+
+/* =========================================================
+   COMPONENT BASE STYLES
+   ========================================================= */
+
+/* Brutalist card */
+.card-brutal {
+  border: 1px solid #0A0A0A;
+  background: #FFFFFF;
+  border-radius: 0;
+}
+
+/* Brutalist input */
+.input-brutal {
+  border: 1px solid #0A0A0A;
+  border-radius: 0;
+  background: #FFFFFF;
+  padding: 12px 16px;
+  font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  transition: border 200ms ease;
+}
+
+.input-brutal:focus {
+  border: 2px solid #7B5EA7;
+  outline: none;
+}
+
+.input-brutal::placeholder {
+  color: #999990;
+  font-family: var(--font-ibm-var), 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+
+/* Brutalist button base */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0;
+  font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 12px 24px;
+  cursor: crosshair;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: #0A0A0A;
+  color: #F5F5F0;
+  border-color: #0A0A0A;
+}
+.btn-primary:hover {
+  background: #7B5EA7;
+  border-color: #7B5EA7;
+}
+
+.btn-accent {
+  background: #C8FF00;
+  color: #0A0A0A;
+  border-color: #C8FF00;
+  font-weight: 700;
+}
+.btn-accent:hover {
+  background: #b8ef00;
+  border-color: #b8ef00;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #0A0A0A;
+  border-color: #0A0A0A;
+}
+.btn-ghost:hover {
+  background: #0A0A0A;
+  color: #F5F5F0;
+}
+
+.btn-danger {
+  background: transparent;
+  color: #FF3333;
+  border-color: transparent;
+}
+.btn-danger:hover {
+  background: #FF3333;
+  color: #FFFFFF;
+  border-color: #FF3333;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+/* Glitch effect */
+@keyframes glitch {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-2px); color: #7B5EA7; }
+  40%  { transform: translateX(2px); color: #C8FF00; }
+  60%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s steps(1) infinite;
+}
+
+/* Ticker tape */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-inner {
+  display: flex;
+  animation: ticker 20s linear infinite;
+  width: max-content;
+}
+
+/* Blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Scanline */
+.scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Grid decoration squares */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* Processing terminal lines */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-line {
+  animation: fadeInUp 0.3s ease forwards;
+  opacity: 0;
+}
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: #F5F5F0; }
+::-webkit-scrollbar-thumb  { background: #0A0A0A; }
+::-webkit-scrollbar-thumb:hover { background: #7B5EA7; }
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: #C8FF00;
+  color: #0A0A0A;
+}
+
+/* =========================================================
+   TABLE BRUTALIST
+   ========================================================= */
+
+.table-brutal {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #0A0A0A;
+}
+
+.table-brutal th,
+.table-brutal td {
+  border: 1px solid #0A0A0A;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.table-brutal th {
+  background: #0A0A0A;
+  color: #F5F5F0;
+  font-family: var(--font-mono-var), 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.table-brutal tr:hover td {
+  background: #F0F0E8;
+}
+
+/* =========================================================
+   STATUS CHIPS
+   ========================================================= */
+
+.status-ready      { background: #C8FF00; color: #0A0A0A; }
+.status-processing { background: #7B5EA7; color: #FFFFFF; }
+.status-failed     { background: #FF3333; color: #FFFFFF; }
+.status-uploaded   { background: #E0E0D8; color: #0A0A0A; }
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 0;
+  font-family: var(--font-ibm-var), 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RESPONSIVE UTILITIES
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .show-mobile { display: none !important; }
+}
