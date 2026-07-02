@@ -43,7 +43,7 @@ Experience ContractIQ in your preferred aesthetic. Our themes are precision-engi
       <td align="center"><b>Dark Mode</b></td>
     </tr>
     <tr>
-      <td><img width="1024" height="1536" alt="Image" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
+      <td><img width="853" height="1844" alt="Image" src="https://github.com/user-attachments/assets/81efb8f8-b27b-4325-aa2e-4d5e78597eb5" /></td>
       <td><img width="1024" height="1536" alt="Image" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
     </tr>
   </table>
