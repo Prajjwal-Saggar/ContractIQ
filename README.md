@@ -1,6 +1,6 @@
 <div align="center">
   <!-- Place your banner image here -->
-  <!-- <img src="./docs/assets/banner.png" alt="ContractIQ Banner" width="100%" /> -->
+ <img width="1915" height="821" alt="Image" src="https://github.com/user-attachments/assets/e8bec99b-88e9-442d-bfec-8473b3b620bf" />
   <h1>ContractIQ_</h1>
   <p><strong>AI-powered legal document analysis. Upload. Analyse. Ask.</strong></p>
 
@@ -43,8 +43,8 @@ Experience ContractIQ in your preferred aesthetic. Our themes are precision-engi
       <td align="center"><b>Dark Mode</b></td>
     </tr>
     <tr>
-      <td><!-- <img src="./docs/assets/dashboard-light.png" alt="Dashboard Light" width="400"/> --> <i>[Insert Light Mode Dashboard Screenshot]</i></td>
-      <td><!-- <img src="./docs/assets/dashboard-dark.png" alt="Dashboard Dark" width="400"/> --> <i>[Insert Dark Mode Dashboard Screenshot]</i></td>
+      <td><img width="1024" height="1536" alt="Image" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
+      <td><img width="1024" height="1536" alt="Image" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
     </tr>
   </table>
 </div>
