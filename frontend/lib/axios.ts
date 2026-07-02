@@ -43,6 +43,12 @@ api.interceptors.response.use(
       toast.error('ACCESS DENIED >')
     } else if (status === 413) {
       toast.error('FILE TOO LARGE. MAX 20MB.')
+    } else if (status === 429) {
+      toast.error('AI RATE LIMIT. WAIT A FEW SECONDS AND RETRY.')
+    } else if (status === 502) {
+      toast.error('AI SERVICE UNAVAILABLE. RETRY SHORTLY.')
+    } else if (status === 503) {
+      toast.error('EMBEDDING SERVICE OFFLINE. START PORT 8000.')
     } else if (status === 500) {
       toast.error('SYSTEM ERROR. RETRY.')
     } else if (!error.response) {

@@ -2,11 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# install dependencies first — cached if requirements.txt.txt unchanged
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt.txt
 
-# copy source
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+
 COPY . .
 
 EXPOSE 8000

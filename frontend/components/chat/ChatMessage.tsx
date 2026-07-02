@@ -14,8 +14,8 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
         <div
           style={{
             maxWidth: '70%',
-            background: '#0A0A0A',
-            color: '#F5F5F0',
+            background: 'var(--text)',
+            color: 'var(--bg)',
             padding: '14px 18px',
             borderRadius: 0,
             fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
@@ -32,10 +32,11 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
         <div
           style={{
             maxWidth: '80%',
-            background: '#FFFFFF',
-            border: '1px solid #0A0A0A',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
             padding: '16px 18px',
             borderRadius: 0,
+            transition: 'background 300ms ease',
           }}
         >
           <div
@@ -43,7 +44,7 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
               fontSize: '14px',
               lineHeight: 1.7,
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '12px',
               whiteSpace: 'pre-wrap',
             }}
@@ -58,7 +59,7 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
                 style={{
                   fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                   fontSize: '10px',
-                  color: '#999990',
+                  color: 'var(--text-muted)',
                   letterSpacing: '0.05em',
                 }}
               >
@@ -69,25 +70,25 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
                   key={clause.id}
                   onClick={() => onClauseClick?.(clause.id)}
                   style={{
-                    background: '#F5F5F0',
-                    border: '1px solid #0A0A0A',
+                    background: 'var(--bg)',
+                    border: '1px solid var(--border)',
                     padding: '2px 8px',
                     fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                     fontSize: '10px',
                     cursor: 'crosshair',
                     transition: 'background 200ms ease, color 200ms ease',
                     borderRadius: 0,
-                    color: '#0A0A0A',
+                    color: 'var(--text)',
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement
-                    el.style.background = '#7B5EA7'
+                    el.style.background = 'var(--primary)'
                     el.style.color = '#FFFFFF'
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement
-                    el.style.background = '#F5F5F0'
-                    el.style.color = '#0A0A0A'
+                    el.style.background = 'var(--bg)'
+                    el.style.color = 'var(--text)'
                   }}
                 >
                   [{clause.chunkIndex}]
@@ -102,7 +103,7 @@ export default function ChatMessage({ message, onClauseClick }: ChatMessageProps
               marginTop: '8px',
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '10px',
-              color: '#999990',
+              color: 'var(--text-muted)',
             }}
           >
             {formatDateTime(message.askedAt)}

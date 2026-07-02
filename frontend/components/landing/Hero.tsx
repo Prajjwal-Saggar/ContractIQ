@@ -32,7 +32,7 @@ function GridDecoration() {
             width: '32px',
             height: '32px',
             background: filled[i] ?? 'transparent',
-            border: filled[i] ? 'none' : '1px solid #E0E0D8',
+            border: filled[i] ? 'none' : '1px solid var(--border-light)',
           }}
         />
       ))}
@@ -78,9 +78,10 @@ export default function Hero() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: 'clamp(52px, 8vw, 96px)',
               lineHeight: 0.95,
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '24px',
               letterSpacing: '0.02em',
+              transition: 'color 300ms ease',
             }}
           >
             <CharReveal text="CONTRACT" initialDelay={0.1} />
@@ -96,10 +97,11 @@ export default function Hero() {
               style={{
                 fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                 fontSize: '18px',
-                color: '#555550',
+                color: 'var(--text-secondary)',
                 lineHeight: 1.6,
                 maxWidth: '480px',
                 marginBottom: '40px',
+                transition: 'color 300ms ease',
               }}
             >
               Upload contracts. Get instant risk analysis.
@@ -117,9 +119,9 @@ export default function Hero() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    background: '#0A0A0A',
-                    color: '#F5F5F0',
-                    border: '1px solid #0A0A0A',
+                    background: 'var(--text)',
+                    color: 'var(--bg)',
+                    border: '1px solid var(--text)',
                     padding: '16px 32px',
                     fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                     fontSize: '14px',
@@ -130,10 +132,10 @@ export default function Hero() {
                     borderRadius: 0,
                   }}
                   onMouseEnter={(e) =>
-                    ((e.currentTarget as HTMLElement).style.background = '#7B5EA7')
+                    ((e.currentTarget as HTMLElement).style.background = 'var(--primary)')
                   }
                   onMouseLeave={(e) =>
-                    ((e.currentTarget as HTMLElement).style.background = '#0A0A0A')
+                    ((e.currentTarget as HTMLElement).style.background = 'var(--text)')
                   }
                 >
                   ANALYSE CONTRACT ↗
@@ -146,8 +148,8 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '8px',
                   background: 'transparent',
-                  color: '#0A0A0A',
-                  border: '1px solid #0A0A0A',
+                  color: 'var(--text)',
+                  border: '1px solid var(--border)',
                   padding: '16px 32px',
                   fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                   fontSize: '14px',
@@ -159,13 +161,13 @@ export default function Hero() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.background = '#0A0A0A'
-                  el.style.color = '#F5F5F0'
+                  el.style.background = 'var(--text)'
+                  el.style.color = 'var(--bg)'
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement
                   el.style.background = 'transparent'
-                  el.style.color = '#0A0A0A'
+                  el.style.color = 'var(--text)'
                 }}
               >
                 VIEW DEMO [&nbsp;&nbsp;]
@@ -218,8 +220,8 @@ export default function Hero() {
           left: 0,
           right: 0,
           overflow: 'hidden',
-          borderTop: '1px solid #0A0A0A',
-          borderBottom: '1px solid #0A0A0A',
+          borderTop: '1px solid var(--border)',
+          borderBottom: '1px solid var(--border)',
           padding: '12px 0',
           background: '#0A0A0A',
         }}

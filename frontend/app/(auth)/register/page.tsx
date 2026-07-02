@@ -137,7 +137,8 @@ export default function RegisterPage() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '48px 40px',
-          background: '#F5F5F0',
+          background: 'var(--bg)',
+          transition: 'background 300ms ease',
         }}
       >
         <div style={{ width: '100%', maxWidth: '440px' }}>
@@ -150,7 +151,7 @@ export default function RegisterPage() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: '48px',
               letterSpacing: '0.03em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '40px',
             }}
           >
@@ -203,16 +204,17 @@ export default function RegisterPage() {
                 value={form.role}
                 onChange={(e) => handleChange('role', e.target.value)}
                 style={{
-                  border: '1px solid #0A0A0A',
+                  border: '1px solid var(--border)',
                   borderRadius: 0,
-                  background: '#FFFFFF',
+                  background: 'var(--surface)',
                   padding: '12px 16px',
                   fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                   fontSize: '14px',
-                  color: '#0A0A0A',
+                  color: 'var(--text)',
                   cursor: 'crosshair',
                   appearance: 'none',
                   outline: 'none',
+                  transition: 'background 300ms ease',
                 }}
               >
                 <option value="USER">STANDARD USER</option>
@@ -229,8 +231,8 @@ export default function RegisterPage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                background: isLoading ? '#555550' : '#0A0A0A',
-                color: '#F5F5F0',
+                background: isLoading ? 'var(--text-secondary)' : 'var(--text)',
+                color: 'var(--bg)',
                 border: 'none',
                 padding: '16px 24px',
                 fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
@@ -243,10 +245,10 @@ export default function RegisterPage() {
                 borderRadius: 0,
               }}
               onMouseEnter={(e) => {
-                if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#7B5EA7'
+                if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--primary)'
               }}
               onMouseLeave={(e) => {
-                if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#0A0A0A'
+                if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--text)'
               }}
             >
               {isLoading ? 'INITIALISING...' : 'INITIALISE ACCOUNT ↗'}
@@ -260,13 +262,13 @@ export default function RegisterPage() {
               textAlign: 'center',
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '12px',
-              color: '#999990',
+              color: 'var(--text-muted)',
             }}
           >
             ALREADY IN SYSTEM?{' '}
             <Link href="/login">
               <span
-                style={{ color: '#7B5EA7', cursor: 'crosshair', fontWeight: 600 }}
+                style={{ color: 'var(--primary)', cursor: 'crosshair', fontWeight: 600 }}
               >
                 ACCESS →
               </span>

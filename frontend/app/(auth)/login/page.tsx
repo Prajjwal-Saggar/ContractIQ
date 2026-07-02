@@ -60,7 +60,8 @@ export default function LoginPage() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '48px 40px',
-          background: '#F5F5F0',
+          background: 'var(--bg)',
+          transition: 'background 300ms ease',
         }}
       >
         <div style={{ width: '100%', maxWidth: '440px' }}>
@@ -72,7 +73,7 @@ export default function LoginPage() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: '48px',
               letterSpacing: '0.03em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '40px',
             }}
           >
@@ -111,8 +112,8 @@ export default function LoginPage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                background: isLoading ? '#555550' : '#0A0A0A',
-                color: '#F5F5F0',
+                background: isLoading ? 'var(--text-secondary)' : 'var(--text)',
+                color: 'var(--bg)',
                 border: 'none',
                 padding: '16px 24px',
                 fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
@@ -125,10 +126,10 @@ export default function LoginPage() {
                 borderRadius: 0,
               }}
               onMouseEnter={(e) => {
-                if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#7B5EA7'
+                if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--primary)'
               }}
               onMouseLeave={(e) => {
-                if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#0A0A0A'
+                if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--text)'
               }}
             >
               {isLoading ? 'AUTHENTICATING...' : 'ACCESS SYSTEM ↗'}
@@ -141,12 +142,12 @@ export default function LoginPage() {
               textAlign: 'center',
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '12px',
-              color: '#999990',
+              color: 'var(--text-muted)',
             }}
           >
             NOT IN SYSTEM?{' '}
             <Link href="/register">
-              <span style={{ color: '#7B5EA7', cursor: 'crosshair', fontWeight: 600 }}>
+              <span style={{ color: 'var(--primary)', cursor: 'crosshair', fontWeight: 600 }}>
                 REGISTER →
               </span>
             </Link>

@@ -16,8 +16,9 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#F5F5F0',
-        borderTop: '1px solid #0A0A0A',
+        background: 'var(--bg)',
+        borderTop: '1px solid var(--border)',
+        transition: 'background 300ms ease, border-color 300ms ease',
       }}
     >
       {/* Main footer row */}
@@ -29,7 +30,7 @@ export default function Footer() {
           padding: '48px 64px',
           gap: '32px',
           flexWrap: 'wrap',
-          borderBottom: '1px solid #E0E0D8',
+          borderBottom: '1px solid var(--border-light)',
         }}
       >
         {/* Left */}
@@ -39,8 +40,9 @@ export default function Footer() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: '28px',
               letterSpacing: '0.1em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '8px',
+              transition: 'color 300ms ease',
             }}
           >
             CONTRACTIQ_
@@ -49,9 +51,10 @@ export default function Footer() {
             style={{
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
               fontSize: '13px',
-              color: '#555550',
+              color: 'var(--text-secondary)',
               maxWidth: '260px',
               lineHeight: 1.6,
+              transition: 'color 300ms ease',
             }}
           >
             AI-powered legal document analysis. Upload. Analyse. Ask.
@@ -87,15 +90,15 @@ export default function Footer() {
                   fontFamily: 'var(--font-mono-var), Space Mono, monospace',
                   fontSize: '10px',
                   letterSpacing: '0.15em',
-                  color: '#999990',
+                  color: 'var(--text-muted)',
                   cursor: 'crosshair',
                   transition: 'color 200ms ease',
                 }}
                 onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = '#0A0A0A')
+                  ((e.target as HTMLElement).style.color = 'var(--text)')
                 }
                 onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = '#999990')
+                  ((e.target as HTMLElement).style.color = 'var(--text-muted)')
                 }
               >
                 {label}
@@ -136,7 +139,7 @@ export default function Footer() {
         style={{
           overflow: 'hidden',
           padding: '12px 0',
-          borderTop: '1px solid #E0E0D8',
+          borderTop: '1px solid var(--border-light)',
         }}
       >
         <div className="ticker-inner">

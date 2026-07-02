@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { LayoutDashboard, FileText, Upload, BarChart3, LogOut, Menu, X } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { getCurrentTime } from '@/lib/utils'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 import toast from 'react-hot-toast'
 
 const PAGE_TITLES: Record<string, string> = {
@@ -39,7 +40,7 @@ function MobileNav({
       style={{
         position: 'fixed',
         inset: 0,
-        background: '#0A0A0A',
+        background: 'var(--sidebar-bg)',
         zIndex: 500,
         display: 'flex',
         flexDirection: 'column',
@@ -137,11 +138,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#F5F5F0',
+          background: 'var(--bg)',
           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
           fontSize: '12px',
-          color: '#999990',
+          color: 'var(--text-muted)',
           letterSpacing: '0.1em',
+          transition: 'background 300ms ease',
         }}
       >
         AUTHENTICATING_<span className="blink">|</span>
@@ -150,8 +152,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#F5F5F0' }}>
-      {/* Desktop Sidebar */}
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)', transition: 'background 300ms ease' }}>
+      {/* Desktop Sidebar — always dark */}
       <aside
         className="hide-mobile"
         style={{
@@ -160,15 +162,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           position: 'fixed',
           left: 0,
           top: 0,
-          background: '#0A0A0A',
-          borderRight: '1px solid #333',
+          background: 'var(--sidebar-bg)',
+          borderRight: '1px solid var(--sidebar-border)',
           display: 'flex',
           flexDirection: 'column',
           zIndex: 100,
+          transition: 'background 300ms ease, border-color 300ms ease',
         }}
       >
         {/* Logo */}
-        <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid #222' }}>
+        <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid var(--sidebar-section)' }}>
           <div
             style={{
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
@@ -216,7 +219,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   onMouseEnter={(e) => {
                     if (!isActive) {
                       const el = e.currentTarget as HTMLElement
-                      el.style.background = '#1A1A1A'
+                      el.style.background = 'var(--sidebar-hover)'
                       el.style.color = '#FFFFFF'
                     }
                   }}
@@ -246,7 +249,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </nav>
 
         {/* User section */}
-        <div style={{ padding: '20px', borderTop: '1px solid #222' }}>
+        <div style={{ padding: '20px', borderTop: '1px solid var(--sidebar-section)' }}>
           <div
             style={{
               fontFamily: 'var(--font-mono-var), Space Mono, monospace',
@@ -333,15 +336,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <header
           style={{
             height: '48px',
-            borderBottom: '1px solid #E0E0D8',
+            borderBottom: '1px solid var(--border-light)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0 24px',
-            background: '#F5F5F0',
+            background: 'var(--bg)',
             position: 'sticky',
             top: 0,
             zIndex: 50,
+            transition: 'background 300ms ease, border-color 300ms ease',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -349,7 +353,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <button
               className="show-mobile"
               onClick={() => setMobileOpen(true)}
-              style={{ background: 'none', border: 'none', cursor: 'crosshair', color: '#0A0A0A' }}
+              style={{ background: 'none', border: 'none', cursor: 'crosshair', color: 'var(--text)' }}
             >
               <Menu size={20} />
             </button>
@@ -358,7 +362,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
                 fontSize: '22px',
                 letterSpacing: '0.05em',
-                color: '#0A0A0A',
+                color: 'var(--text)',
+                transition: 'color 300ms ease',
               }}
             >
               {pageTitle}
@@ -370,11 +375,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               style={{
                 fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                 fontSize: '11px',
-                color: '#999990',
+                color: 'var(--text-muted)',
               }}
             >
               {time}
             </span>
+            <ThemeToggle size="sm" />
           </div>
         </header>
 

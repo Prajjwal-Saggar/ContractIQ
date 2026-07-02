@@ -51,8 +51,13 @@ export default function ChatInterface({
       )
       setMessages((prev) => [...prev, data])
       setSourceClauses(data.sourceClauses ?? [])
-    } catch {
-      toast.error('QUERY FAILED. RETRY.')
+    } catch (err: unknown) {
+      // axios interceptor already toasts for known statuses (429, 502, 503…)
+      // only show a fallback for truly unknown errors
+      const anyErr = err as { response?: unknown; normalizedMessage?: string }
+      if (!anyErr?.response) {
+        toast.error('QUERY FAILED. RETRY.')
+      }
     } finally {
       setIsLoading(false)
     }
@@ -74,17 +79,17 @@ export default function ChatInterface({
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          borderRight: '1px solid #E0E0D8',
+          borderRight: '1px solid var(--border-light)',
         }}
       >
         {/* Chat header */}
         <div
           style={{
             padding: '12px 20px',
-            borderBottom: '1px solid #E0E0D8',
+            borderBottom: '1px solid var(--border-light)',
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '11px',
-            color: '#999990',
+            color: 'var(--text-muted)',
             letterSpacing: '0.05em',
             display: 'flex',
             justifyContent: 'space-between',
@@ -97,12 +102,12 @@ export default function ChatInterface({
             onClick={() => setShowDrawer((v) => !v)}
             style={{
               background: 'none',
-              border: '1px solid #E0E0D8',
+              border: '1px solid var(--border-light)',
               padding: '4px 10px',
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '10px',
               cursor: 'crosshair',
-              color: '#555550',
+              color: 'var(--text-secondary)',
             }}
           >
             {showDrawer ? 'HIDE' : 'VIEW SOURCE CLAUSES ↑'}
@@ -127,7 +132,7 @@ export default function ChatInterface({
                 marginTop: '60px',
                 fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                 fontSize: '12px',
-                color: '#999990',
+                color: 'var(--text-muted)',
               }}
             >
               <div style={{ fontSize: '48px', marginBottom: '16px', opacity: 0.2 }}>?</div>
@@ -147,12 +152,12 @@ export default function ChatInterface({
             <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
               <div
                 style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #0A0A0A',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
                   padding: '14px 18px',
                   fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                   fontSize: '12px',
-                  color: '#999990',
+                  color: 'var(--text-muted)',
                 }}
               >
                 &gt; PROCESSING QUERY_<span className="blink">|</span>
@@ -167,7 +172,7 @@ export default function ChatInterface({
         <div
           style={{
             padding: '12px 20px',
-            borderTop: '1px solid #E0E0D8',
+            borderTop: '1px solid var(--border-light)',
             display: 'flex',
             gap: '8px',
             flexWrap: 'wrap',
@@ -178,25 +183,25 @@ export default function ChatInterface({
               key={q}
               onClick={() => sendQuestion(q)}
               style={{
-                background: '#F5F5F0',
-                border: '1px solid #E0E0D8',
+                background: 'var(--bg)',
+                border: '1px solid var(--border-light)',
                 padding: '4px 12px',
                 fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                 fontSize: '11px',
                 cursor: 'crosshair',
-                color: '#555550',
+                color: 'var(--text-secondary)',
                 transition: 'all 200ms ease',
                 borderRadius: 0,
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = '#7B5EA7'
-                el.style.color = '#7B5EA7'
+                el.style.borderColor = 'var(--primary)'
+                el.style.color = 'var(--primary)'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = '#E0E0D8'
-                el.style.color = '#555550'
+                el.style.borderColor = 'var(--border-light)'
+                el.style.color = 'var(--text-secondary)'
               }}
             >
               {q}
@@ -207,7 +212,7 @@ export default function ChatInterface({
         {/* Input area */}
         <div
           style={{
-            borderTop: '1px solid #0A0A0A',
+            borderTop: '1px solid var(--border)',
             display: 'flex',
           }}
         >
@@ -220,13 +225,15 @@ export default function ChatInterface({
             style={{
               flex: 1,
               border: 'none',
-              borderRight: '1px solid #0A0A0A',
+              borderRight: '1px solid var(--border)',
               padding: '16px 20px',
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
               fontSize: '14px',
-              background: '#FFFFFF',
+              background: 'var(--surface)',
+              color: 'var(--text)',
               outline: 'none',
               borderRadius: 0,
+              transition: 'background 300ms ease',
             }}
           />
           <button
@@ -234,8 +241,8 @@ export default function ChatInterface({
             disabled={isLoading || !question.trim()}
             style={{
               padding: '16px 24px',
-              background: isLoading ? '#555550' : '#0A0A0A',
-              color: '#F5F5F0',
+              background: isLoading ? 'var(--text-secondary)' : 'var(--text)',
+              color: 'var(--bg)',
               border: 'none',
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
               fontSize: '12px',
@@ -249,10 +256,10 @@ export default function ChatInterface({
               borderRadius: 0,
             }}
             onMouseEnter={(e) => {
-              if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#7B5EA7'
+              if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--primary)'
             }}
             onMouseLeave={(e) => {
-              if (!isLoading) (e.currentTarget as HTMLElement).style.background = '#0A0A0A'
+              if (!isLoading) (e.currentTarget as HTMLElement).style.background = 'var(--text)'
             }}
           >
             TRANSMIT
@@ -268,8 +275,8 @@ export default function ChatInterface({
           flex: '0 0 35%',
           height: '100%',
           overflowY: 'auto',
-          background: '#FAFAF8',
-          border: '1px solid #E0E0D8',
+          background: 'var(--hover-bg)',
+          border: '1px solid var(--border-light)',
         }}
       >
         <SourceClauses
@@ -289,8 +296,8 @@ export default function ChatInterface({
             left: 0,
             right: 0,
             height: '50vh',
-            background: '#FFFFFF',
-            border: '1px solid #0A0A0A',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
             zIndex: 200,
             overflowY: 'auto',
           }}

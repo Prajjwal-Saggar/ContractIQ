@@ -77,6 +77,11 @@ public class GeminiClient {
                         ? response.body().string() : "empty";
                 log.error("Gemini API error {}: {}",
                         response.code(), errorBody);
+                // surface rate-limit as a distinct signal
+                if (response.code() == 429) {
+                    throw new RuntimeException(
+                            "GEMINI_RATE_LIMITED");
+                }
                 throw new RuntimeException(
                         "Gemini API call failed: "
                                 + response.code());

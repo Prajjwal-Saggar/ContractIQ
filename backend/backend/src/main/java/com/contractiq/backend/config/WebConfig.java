@@ -1,11 +1,14 @@
 package com.contractiq.backend.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet
+        .FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation
+        .CorsRegistry;
+import org.springframework.web.servlet.config.annotation
+        .WebMvcConfigurer;
 
 @Configuration
 @RequiredArgsConstructor
@@ -14,7 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
     private final JwtFilter jwtFilter;
 
     @Bean
-    public FilterRegistrationBean<JwtFilter> registerJwtFilter() {
+    public FilterRegistrationBean<JwtFilter>
+    registerJwtFilter() {
+
         FilterRegistrationBean<JwtFilter> registration =
                 new FilterRegistrationBean<>();
         registration.setFilter(jwtFilter);
@@ -25,15 +30,18 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
+        registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:3000",
-                        "http://localhost:5173"
+                        "http://localhost:5173",
+                        "http://127.0.0.1:3000",
+                        "http://127.0.0.1:5173"
                 )
                 .allowedMethods(
                         "GET", "POST", "PUT",
-                        "DELETE", "OPTIONS")
+                        "DELETE", "OPTIONS", "PATCH")
                 .allowedHeaders("*")
+                .exposedHeaders("Authorization")
                 .allowCredentials(true)
                 .maxAge(3600);
     }

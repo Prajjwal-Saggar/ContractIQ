@@ -18,10 +18,11 @@ function StatCard({
   return (
     <div
       style={{
-        border: '1px solid #0A0A0A',
-        background: highlight ? '#FF3333' : '#FFFFFF',
+        border: '1px solid var(--border)',
+        background: highlight ? 'var(--error)' : 'var(--surface)',
         padding: '24px',
         cursor: 'default',
+        transition: 'background 200ms ease',
       }}
     >
       <div
@@ -29,7 +30,7 @@ function StatCard({
           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
           fontSize: '10px',
           letterSpacing: '0.15em',
-          color: highlight ? 'rgba(255,255,255,0.7)' : '#999990',
+          color: highlight ? 'rgba(255,255,255,0.7)' : 'var(--text-muted)',
           marginBottom: '8px',
           textTransform: 'uppercase',
         }}
@@ -40,7 +41,7 @@ function StatCard({
         style={{
           fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
           fontSize: '48px',
-          color: highlight ? '#FFFFFF' : '#0A0A0A',
+          color: highlight ? '#FFFFFF' : 'var(--text)',
           lineHeight: 1,
         }}
       >
@@ -69,7 +70,7 @@ export default function DashboardPage() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '0',
-          border: '1px solid #0A0A0A',
+          border: '1px solid var(--border)',
           marginBottom: '32px',
         }}
       >
@@ -79,7 +80,7 @@ export default function DashboardPage() {
               padding: '24px',
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '12px',
-              color: '#999990',
+              color: 'var(--text-muted)',
               gridColumn: '1 / -1',
             }}
           >
@@ -87,13 +88,13 @@ export default function DashboardPage() {
           </div>
         ) : (
           <>
-            <div style={{ borderRight: '1px solid #0A0A0A' }}>
+            <div style={{ borderRight: '1px solid var(--border)' }}>
               <StatCard label="TOTAL CONTRACTS"    value={summary?.totalContracts ?? 0} />
             </div>
-            <div style={{ borderRight: '1px solid #0A0A0A' }}>
+            <div style={{ borderRight: '1px solid var(--border)' }}>
               <StatCard label="READY FOR ANALYSIS" value={summary?.readyContracts ?? 0} />
             </div>
-            <div style={{ borderRight: '1px solid #0A0A0A' }}>
+            <div style={{ borderRight: '1px solid var(--border)' }}>
               <StatCard label="RISK FLAGS"         value={summary?.totalRiskFlags ?? 0} />
             </div>
             <StatCard
@@ -114,11 +115,11 @@ export default function DashboardPage() {
         }}
       >
         {/* Recent contracts table */}
-        <div style={{ border: '1px solid #0A0A0A' }}>
+        <div style={{ border: '1px solid var(--border)', background: 'var(--surface)', transition: 'background 300ms ease' }}>
           <div
             style={{
               padding: '16px 20px',
-              borderBottom: '1px solid #0A0A0A',
+              borderBottom: '1px solid var(--border)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -129,7 +130,7 @@ export default function DashboardPage() {
                 fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
                 fontSize: '20px',
                 letterSpacing: '0.05em',
-                color: '#0A0A0A',
+                color: 'var(--text)',
               }}
             >
               RECENT CONTRACTS
@@ -181,7 +182,7 @@ export default function DashboardPage() {
                             fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                             fontSize: '13px',
                             fontWeight: 600,
-                            color: '#0A0A0A',
+                            color: 'var(--text)',
                             cursor: 'crosshair',
                             maxWidth: '200px',
                             display: 'block',
@@ -189,8 +190,8 @@ export default function DashboardPage() {
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
                           }}
-                          onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#7B5EA7')}
-                          onMouseLeave={(e) => ((e.target as HTMLElement).style.color = '#0A0A0A')}
+                          onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--primary)')}
+                          onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
                         >
                           {c.originalFileName}
                         </span>
@@ -204,7 +205,7 @@ export default function DashboardPage() {
                         style={{
                           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                           fontSize: '12px',
-                          color: '#555550',
+                          color: 'var(--text-secondary)',
                         }}
                       >
                         {c.clauseCount ?? '—'}
@@ -215,7 +216,7 @@ export default function DashboardPage() {
                         style={{
                           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                           fontSize: '12px',
-                          color: (c.riskFlagCount ?? 0) > 0 ? '#FF3333' : '#555550',
+                          color: (c.riskFlagCount ?? 0) > 0 ? 'var(--error)' : 'var(--text-secondary)',
                           fontWeight: (c.riskFlagCount ?? 0) > 0 ? 700 : 400,
                         }}
                       >
@@ -227,7 +228,7 @@ export default function DashboardPage() {
                         style={{
                           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                           fontSize: '11px',
-                          color: '#999990',
+                          color: 'var(--text-muted)',
                         }}
                       >
                         {formatDate(c.uploadedAt)}
@@ -244,7 +245,7 @@ export default function DashboardPage() {
                           textAlign: 'center',
                           fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
                           fontSize: '12px',
-                          color: '#999990',
+                          color: 'var(--text-muted)',
                         }}
                       >
                         NO CONTRACTS YET. UPLOAD ONE TO BEGIN.
@@ -260,8 +261,8 @@ export default function DashboardPage() {
         {/* System status card */}
         <div
           style={{
-            background: '#0A0A0A',
-            border: '1px solid #333',
+            background: 'var(--sidebar-bg)',
+            border: '1px solid var(--sidebar-border)',
             padding: '24px',
           }}
         >
@@ -272,7 +273,7 @@ export default function DashboardPage() {
               color: '#F5F5F0',
               letterSpacing: '0.05em',
               marginBottom: '24px',
-              borderBottom: '1px solid #222',
+              borderBottom: '1px solid var(--sidebar-section)',
               paddingBottom: '12px',
             }}
           >
@@ -289,7 +290,7 @@ export default function DashboardPage() {
             style={{
               marginTop: '32px',
               paddingTop: '16px',
-              borderTop: '1px solid #222',
+              borderTop: '1px solid var(--sidebar-section)',
             }}
           >
             <Link href="/contracts/upload">

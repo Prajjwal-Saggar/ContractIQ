@@ -28,7 +28,7 @@ export default function Input({
         <label
           htmlFor={id}
           className="label-upper"
-          style={{ color: error ? '#FF3333' : '#999990' }}
+          style={{ color: error ? 'var(--error)' : 'var(--text-muted)' }}
         >
           {label}
         </label>
@@ -39,7 +39,7 @@ export default function Input({
           type={isPassword && showPass ? 'text' : type}
           className={cn('input-brutal', error && 'border-[#FF3333]', className)}
           style={{
-            borderColor: error ? '#FF3333' : undefined,
+            borderColor: error ? 'var(--error)' : undefined,
             paddingRight: isPassword ? '48px' : undefined,
           }}
           {...props}
@@ -54,7 +54,7 @@ export default function Input({
               top: '50%',
               transform: 'translateY(-50%)',
               cursor: 'crosshair',
-              color: '#999990',
+              color: 'var(--text-muted)',
               background: 'none',
               border: 'none',
               padding: 0,
@@ -71,7 +71,7 @@ export default function Input({
           style={{
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '11px',
-            color: '#FF3333',
+            color: 'var(--error)',
             letterSpacing: '0.05em',
           }}
         >
@@ -83,7 +83,7 @@ export default function Input({
           style={{
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '11px',
-            color: '#999990',
+            color: 'var(--text-muted)',
           }}
         >
           {hint}

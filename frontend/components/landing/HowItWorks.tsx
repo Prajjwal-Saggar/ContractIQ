@@ -29,8 +29,9 @@ export default function HowItWorks() {
       id="how-it-works"
       style={{
         padding: '120px 64px',
-        borderTop: '1px solid #E0E0D8',
-        background: '#F5F5F0',
+        borderTop: '1px solid var(--border-light)',
+        background: 'var(--bg)',
+        transition: 'background 300ms ease',
       }}
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
@@ -46,8 +47,9 @@ export default function HowItWorks() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: 'clamp(40px, 6vw, 72px)',
               letterSpacing: '0.02em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
               marginBottom: '80px',
+              transition: 'color 300ms ease',
             }}
           >
             THREE STEPS TO INTELLIGENCE
@@ -60,7 +62,7 @@ export default function HowItWorks() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: '0',
-            border: '1px solid #0A0A0A',
+            border: '1px solid var(--border)',
           }}
         >
           {STEPS.map((step, i) => (
@@ -68,10 +70,12 @@ export default function HowItWorks() {
               <div
                 style={{
                   padding: '48px 40px',
-                  borderRight: i < STEPS.length - 1 ? '1px solid #0A0A0A' : 'none',
+                  borderRight: i < STEPS.length - 1 ? '1px solid var(--border)' : 'none',
                   position: 'relative',
                   overflow: 'hidden',
                   minHeight: '320px',
+                  background: 'var(--surface)',
+                  transition: 'background 300ms ease',
                 }}
               >
                 {/* Large background step number */}
@@ -82,7 +86,7 @@ export default function HowItWorks() {
                     right: '-10px',
                     fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
                     fontSize: '140px',
-                    color: '#E0E0D8',
+                    color: 'var(--border-light)',
                     lineHeight: 1,
                     pointerEvents: 'none',
                     userSelect: 'none',
@@ -109,10 +113,11 @@ export default function HowItWorks() {
                     fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
                     fontSize: '48px',
                     letterSpacing: '0.05em',
-                    color: '#0A0A0A',
+                    color: 'var(--text)',
                     marginBottom: '16px',
                     position: 'relative',
                     zIndex: 1,
+                    transition: 'color 300ms ease',
                   }}
                 >
                   {step.title}
@@ -122,11 +127,12 @@ export default function HowItWorks() {
                   style={{
                     fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
                     fontSize: '15px',
-                    color: '#0A0A0A',
+                    color: 'var(--text)',
                     lineHeight: 1.6,
                     marginBottom: '16px',
                     position: 'relative',
                     zIndex: 1,
+                    transition: 'color 300ms ease',
                   }}
                 >
                   {step.desc}

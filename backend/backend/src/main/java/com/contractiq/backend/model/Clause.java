@@ -2,6 +2,7 @@ package com.contractiq.backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Array;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -33,6 +34,7 @@ public class Clause {
     // stored as a pgvector column
     @Column(columnDefinition = "vector(768)")
     @JdbcTypeCode(SqlTypes.VECTOR)
+    @Array(length = 768)
     private float[] embedding;
 
     // risk analysis

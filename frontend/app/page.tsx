@@ -7,7 +7,7 @@ import Stats from '@/components/landing/Stats'
 
 export default function LandingPage() {
   return (
-    <main style={{ background: '#F5F5F0' }}>
+    <main style={{ background: 'var(--bg)', transition: 'background 300ms ease' }}>
       <Navbar />
       <Hero />
       <Features />

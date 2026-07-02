@@ -59,7 +59,7 @@ export default function ContractsPage() {
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: '36px',
               letterSpacing: '0.03em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
             }}
           >
             ALL CONTRACTS
@@ -72,8 +72,8 @@ export default function ContractsPage() {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              background: '#0A0A0A',
-              color: '#F5F5F0',
+              background: 'var(--text)',
+              color: 'var(--bg)',
               border: 'none',
               padding: '12px 24px',
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
@@ -85,10 +85,10 @@ export default function ContractsPage() {
               borderRadius: 0,
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.background = '#7B5EA7')
+              ((e.currentTarget as HTMLElement).style.background = 'var(--primary)')
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.background = '#0A0A0A')
+              ((e.currentTarget as HTMLElement).style.background = 'var(--text)')
             }
           >
             UPLOAD NEW +
@@ -120,18 +120,19 @@ export default function ContractsPage() {
           placeholder="SEARCH CONTRACTS_"
           style={{
             width: '100%',
-            border: '1px solid #0A0A0A',
+            border: '1px solid var(--border)',
             borderRadius: 0,
-            background: '#FFFFFF',
+            background: 'var(--surface)',
             padding: '14px 16px 14px 44px',
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '12px',
             letterSpacing: '0.05em',
             outline: 'none',
-            color: '#0A0A0A',
+            color: 'var(--text)',
+            transition: 'background 300ms ease',
           }}
-          onFocus={(e) => ((e.target as HTMLElement).style.border = '2px solid #7B5EA7')}
-          onBlur={(e) => ((e.target as HTMLElement).style.border = '1px solid #0A0A0A')}
+          onFocus={(e) => ((e.target as HTMLElement).style.border = '2px solid var(--primary)')}
+          onBlur={(e) => ((e.target as HTMLElement).style.border = '1px solid var(--border)')}
         />
       </div>
 
@@ -143,8 +144,8 @@ export default function ContractsPage() {
             textAlign: 'center',
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '12px',
-            color: '#999990',
-            border: '1px solid #E0E0D8',
+            color: 'var(--text-muted)',
+            border: '1px solid var(--border-light)',
           }}
         >
           LOADING ARCHIVE_<span className="blink">|</span>
@@ -154,15 +155,16 @@ export default function ContractsPage() {
           style={{
             padding: '80px 24px',
             textAlign: 'center',
-            border: '1px solid #0A0A0A',
-            background: '#FFFFFF',
+            border: '1px solid var(--border)',
+            background: 'var(--surface)',
+            transition: 'background 300ms ease',
           }}
         >
           <div
             style={{
               fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
               fontSize: '96px',
-              color: '#E0E0D8',
+              color: 'var(--border-light)',
               lineHeight: 1,
               marginBottom: '16px',
             }}
@@ -173,7 +175,7 @@ export default function ContractsPage() {
             style={{
               fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
               fontSize: '13px',
-              color: '#999990',
+              color: 'var(--text-muted)',
               marginBottom: '24px',
             }}
           >
@@ -183,8 +185,8 @@ export default function ContractsPage() {
             <Link href="/contracts/upload">
               <button
                 style={{
-                  background: '#0A0A0A',
-                  color: '#F5F5F0',
+                  background: 'var(--text)',
+                  color: 'var(--bg)',
                   border: 'none',
                   padding: '12px 24px',
                   fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
@@ -195,10 +197,10 @@ export default function ContractsPage() {
                   borderRadius: 0,
                 }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.background = '#7B5EA7')
+                  ((e.currentTarget as HTMLElement).style.background = 'var(--primary)')
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.background = '#0A0A0A')
+                  ((e.currentTarget as HTMLElement).style.background = 'var(--text)')
                 }
               >
                 UPLOAD FIRST CONTRACT ↗
@@ -207,7 +209,7 @@ export default function ContractsPage() {
           )}
         </div>
       ) : (
-        <div style={{ border: '1px solid #0A0A0A' }}>
+        <div style={{ border: '1px solid var(--border)' }}>
           {filtered.map((contract) => (
             <ContractCard
               key={contract.id}
@@ -226,7 +228,7 @@ export default function ContractsPage() {
             marginTop: '12px',
             fontFamily: 'var(--font-ibm-var), IBM Plex Mono, monospace',
             fontSize: '11px',
-            color: '#999990',
+            color: 'var(--text-muted)',
           }}
         >
           {filtered.length} CONTRACT{filtered.length !== 1 ? 'S' : ''} IN ARCHIVE

@@ -12,9 +12,10 @@ load_dotenv()
 
 GEMINI_API_KEY  = os.getenv("GEMINI_API_KEY")
 EMBEDDING_MODEL = os.getenv(
-    "EMBEDDING_MODEL", "text-embedding-004")
+    "EMBEDDING_MODEL", "gemini-embedding-001")
 CHUNK_SIZE      = int(os.getenv("CHUNK_SIZE", "500"))
 CHUNK_OVERLAP   = int(os.getenv("CHUNK_OVERLAP", "50"))
+EMBEDDING_DIMS  = int(os.getenv("EMBEDDING_DIMS", "768"))
 
 # initialise new client
 client = genai.Client(api_key=GEMINI_API_KEY)
@@ -82,6 +83,9 @@ def embed_single(text: str) -> List[float]:
         result = client.models.embed_content(
             model=EMBEDDING_MODEL,
             contents=text,
+            config=types.EmbedContentConfig(
+                output_dimensionality=EMBEDDING_DIMS
+            ),
         )
         return result.embeddings[0].values
     except Exception as e:

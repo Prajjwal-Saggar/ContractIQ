@@ -42,6 +42,44 @@
   --error:           #FF3333;
   --success:         #00FF88;
   --warning:         #FF9900;
+
+  /* Dark sidebar (stays dark in both modes) */
+  --sidebar-bg:      #0A0A0A;
+  --sidebar-border:  #333;
+  --sidebar-section: #222;
+
+  /* Hover states */
+  --hover-bg:        #F0F0E8;
+  --sidebar-hover:   #1A1A1A;
+}
+
+/* =========================================================
+   DARK MODE OVERRIDES
+   ========================================================= */
+
+[data-theme="dark"] {
+  --bg:              #0D0D0D;
+  --surface:         #161616;
+  --surface-dark:    #F5F5F0;
+  --primary:         #9B7EC8;
+  --accent:          #C8FF00;
+  --text:            #F0F0EB;
+  --text-secondary:  #A0A09A;
+  --text-muted:      #666660;
+  --border:          #2A2A2A;
+  --border-light:    #232323;
+  --error:           #FF5555;
+  --success:         #00FF88;
+  --warning:         #FF9900;
+
+  /* Dark sidebar in dark mode is slightly lighter */
+  --sidebar-bg:      #111111;
+  --sidebar-border:  #2A2A2A;
+  --sidebar-section: #1E1E1E;
+
+  /* Hover states */
+  --hover-bg:        #1E1E1E;
+  --sidebar-hover:   #222222;
 }
 
 /* =========================================================
@@ -59,12 +97,13 @@ html {
 }
 
 body {
-  background-color: #F5F5F0;
-  color: #0A0A0A;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 /* Remove default button styles */
@@ -98,7 +137,7 @@ input, textarea, select {
 .section-tag {
   font-family: var(--font-mono-var), 'Space Mono', monospace;
   font-size: 11px;
-  color: #7B5EA7;
+  color: var(--primary);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -109,7 +148,7 @@ input, textarea, select {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #999990;
+  color: var(--text-muted);
 }
 
 /* =========================================================
@@ -118,30 +157,33 @@ input, textarea, select {
 
 /* Brutalist card */
 .card-brutal {
-  border: 1px solid #0A0A0A;
-  background: #FFFFFF;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
   border-radius: 0;
+  transition: background 200ms ease, border-color 200ms ease;
 }
 
 /* Brutalist input */
 .input-brutal {
-  border: 1px solid #0A0A0A;
+  border: 1px solid var(--border);
   border-radius: 0;
-  background: #FFFFFF;
+  background: var(--surface);
+  color: var(--text);
   padding: 12px 16px;
   font-family: var(--font-grotesk-var), 'Space Grotesk', sans-serif;
   font-size: 14px;
   width: 100%;
-  transition: border 200ms ease;
+  transition: border 200ms ease, background 200ms ease;
 }
 
 .input-brutal:focus {
-  border: 2px solid #7B5EA7;
+  border: 2px solid var(--primary);
   outline: none;
 }
 
 .input-brutal::placeholder {
-  color: #999990;
+  color: var(--text-muted);
   font-family: var(--font-ibm-var), 'IBM Plex Mono', monospace;
   font-size: 12px;
 }
@@ -164,19 +206,19 @@ input, textarea, select {
 }
 
 .btn-primary {
-  background: #0A0A0A;
-  color: #F5F5F0;
-  border-color: #0A0A0A;
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
 }
 .btn-primary:hover {
-  background: #7B5EA7;
-  border-color: #7B5EA7;
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-accent {
-  background: #C8FF00;
+  background: var(--accent);
   color: #0A0A0A;
-  border-color: #C8FF00;
+  border-color: var(--accent);
   font-weight: 700;
 }
 .btn-accent:hover {
@@ -186,23 +228,23 @@ input, textarea, select {
 
 .btn-ghost {
   background: transparent;
-  color: #0A0A0A;
-  border-color: #0A0A0A;
+  color: var(--text);
+  border-color: var(--border);
 }
 .btn-ghost:hover {
-  background: #0A0A0A;
-  color: #F5F5F0;
+  background: var(--text);
+  color: var(--bg);
 }
 
 .btn-danger {
   background: transparent;
-  color: #FF3333;
+  color: var(--error);
   border-color: transparent;
 }
 .btn-danger:hover {
-  background: #FF3333;
+  background: var(--error);
   color: #FFFFFF;
-  border-color: #FF3333;
+  border-color: var(--error);
 }
 
 /* =========================================================
@@ -289,9 +331,9 @@ input, textarea, select {
    ========================================================= */
 
 ::-webkit-scrollbar        { width: 4px; height: 4px; }
-::-webkit-scrollbar-track  { background: #F5F5F0; }
-::-webkit-scrollbar-thumb  { background: #0A0A0A; }
-::-webkit-scrollbar-thumb:hover { background: #7B5EA7; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 /* =========================================================
    SELECTION
@@ -309,19 +351,19 @@ input, textarea, select {
 .table-brutal {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #0A0A0A;
+  border: 1px solid var(--border);
 }
 
 .table-brutal th,
 .table-brutal td {
-  border: 1px solid #0A0A0A;
+  border: 1px solid var(--border);
   padding: 10px 14px;
   text-align: left;
 }
 
 .table-brutal th {
-  background: #0A0A0A;
-  color: #F5F5F0;
+  background: var(--text);
+  color: var(--bg);
   font-family: var(--font-mono-var), 'Space Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.15em;
@@ -329,7 +371,7 @@ input, textarea, select {
 }
 
 .table-brutal tr:hover td {
-  background: #F0F0E8;
+  background: var(--hover-bg);
 }
 
 /* =========================================================

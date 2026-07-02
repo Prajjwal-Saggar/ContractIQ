@@ -20,25 +20,25 @@ export default function ContractCard({ contract, onDelete, onAnalyse }: Contract
         alignItems: 'center',
         gap: '16px',
         padding: '20px 24px',
-        borderBottom: '1px solid #0A0A0A',
-        background: '#FFFFFF',
+        borderBottom: '1px solid var(--border)',
+        background: 'var(--surface)',
         transition: 'background 200ms ease',
         cursor: 'crosshair',
         flexWrap: 'wrap',
       }}
-      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = '#F0F0E8')}
-      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = '#FFFFFF')}
+      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = 'var(--hover-bg)')}
+      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = 'var(--surface)')}
     >
       {/* Icon + name */}
       <div style={{ flex: '1 1 240px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-        <FileText size={20} style={{ color: '#7B5EA7', marginTop: '2px', flexShrink: 0 }} />
+        <FileText size={20} style={{ color: 'var(--primary)', marginTop: '2px', flexShrink: 0 }} />
         <div>
           <div
             style={{
               fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
               fontSize: '14px',
               fontWeight: 600,
-              color: '#0A0A0A',
+              color: 'var(--text)',
               wordBreak: 'break-word',
             }}
           >
@@ -101,13 +101,13 @@ export default function ContractCard({ contract, onDelete, onAnalyse }: Contract
               fontSize: '12px',
               fontWeight: 600,
               letterSpacing: '0.08em',
-              color: '#0A0A0A',
+              color: 'var(--text)',
               cursor: 'crosshair',
               padding: '4px 0',
               transition: 'color 200ms ease',
             }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#7B5EA7')}
-            onMouseLeave={(e) => ((e.target as HTMLElement).style.color = '#0A0A0A')}
+            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--primary)')}
+            onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
           >
             OPEN →
           </button>

@@ -92,11 +92,10 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- pgvector for Java -->
+		<!-- Hibernate 7 native pgvector support -->
 		<dependency>
-			<groupId>com.pgvector</groupId>
-			<artifactId>pgvector</artifactId>
-			<version>0.1.6</version>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-vector</artifactId>
 		</dependency>
 
 		<!-- JWT — same as DevSync -->

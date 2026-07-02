@@ -61,25 +61,25 @@ function FeatureCard({
         }}
         onMouseEnter={(e) => {
           const el = e.currentTarget as HTMLElement
-          el.style.background = '#0A0A0A'
-          el.style.color = '#F5F5F0'
+          el.style.background = 'var(--text)'
+          el.style.color = 'var(--bg)'
           const icon = el.querySelector('.feature-icon') as HTMLElement
           const titleEl = el.querySelector('.feature-title') as HTMLElement
           const descEl = el.querySelector('.feature-desc') as HTMLElement
           if (icon) icon.style.color = '#C8FF00'
-          if (titleEl) titleEl.style.color = '#F5F5F0'
+          if (titleEl) titleEl.style.color = 'var(--bg)'
           if (descEl) descEl.style.color = '#999990'
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget as HTMLElement
-          el.style.background = '#FFFFFF'
-          el.style.color = '#0A0A0A'
+          el.style.background = 'var(--surface)'
+          el.style.color = 'var(--text)'
           const icon = el.querySelector('.feature-icon') as HTMLElement
           const titleEl = el.querySelector('.feature-title') as HTMLElement
           const descEl = el.querySelector('.feature-desc') as HTMLElement
-          if (icon) icon.style.color = '#0A0A0A'
-          if (titleEl) titleEl.style.color = '#0A0A0A'
-          if (descEl) descEl.style.color = '#555550'
+          if (icon) icon.style.color = 'var(--text)'
+          if (titleEl) titleEl.style.color = 'var(--text)'
+          if (descEl) descEl.style.color = 'var(--text-secondary)'
         }}
       >
         <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -107,7 +107,7 @@ function FeatureCard({
             fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
             fontSize: '26px',
             letterSpacing: '0.05em',
-            color: '#0A0A0A',
+            color: 'var(--text)',
             marginBottom: '12px',
             transition: 'color 200ms ease',
           }}
@@ -120,7 +120,7 @@ function FeatureCard({
           style={{
             fontFamily: 'var(--font-grotesk-var), Space Grotesk, sans-serif',
             fontSize: '14px',
-            color: '#555550',
+            color: 'var(--text-secondary)',
             lineHeight: 1.6,
             transition: 'color 200ms ease',
           }}
@@ -155,10 +155,11 @@ export default function Features() {
             fontFamily: 'var(--font-bebas), Bebas Neue, cursive',
             fontSize: 'clamp(40px, 6vw, 72px)',
             letterSpacing: '0.02em',
-            color: '#0A0A0A',
+            color: 'var(--text)',
             marginBottom: '64px',
-            borderBottom: '1px solid #E0E0D8',
+            borderBottom: '1px solid var(--border-light)',
             paddingBottom: '32px',
+            transition: 'color 300ms ease',
           }}
         >
           BUILT FOR LEGAL INTELLIGENCE
@@ -171,15 +172,15 @@ export default function Features() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '0',
-          border: '1px solid #0A0A0A',
+          border: '1px solid var(--border)',
         }}
       >
         {FEATURES.map((feature, i) => (
           <div
             key={feature.title}
             style={{
-              borderRight: i % 3 !== 2 ? '1px solid #0A0A0A' : 'none',
-              borderBottom: i < 3 ? '1px solid #0A0A0A' : 'none',
+              borderRight: i % 3 !== 2 ? '1px solid var(--border)' : 'none',
+              borderBottom: i < 3 ? '1px solid var(--border)' : 'none',
             }}
           >
             <FeatureCard {...feature} delay={0.1 * i} />
