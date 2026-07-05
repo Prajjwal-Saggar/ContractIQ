@@ -1,145 +1,454 @@
 <div align="center">
-  <!-- Place your banner image here -->
- <img width="1915" height="821" alt="Image" src="https://github.com/user-attachments/assets/e8bec99b-88e9-442d-bfec-8473b3b620bf" />
-  <h1>ContractIQ_</h1>
-  <p><strong>AI-powered legal document analysis. Upload. Analyse. Ask.</strong></p>
 
-  <p>
-    <a href="#features">Features</a> •
-    <a href="#screenshots">Screenshots</a> •
-    <a href="#getting-started">Getting Started</a> •
-    <a href="#architecture">Architecture</a>
-  </p>
+<img width="1915" height="821" alt="ContractIQ Banner" src="https://github.com/user-attachments/assets/e8bec99b-88e9-442d-bfec-8473b3b620bf" />
+
+<br />
+
+<img src="https://img.shields.io/badge/STATUS-LIVE-00FF88?style=for-the-badge&labelColor=0A0A0A" alt="Live" />
+&nbsp;
+<img src="https://img.shields.io/badge/VERSION-1.0.0-7B5EA7?style=for-the-badge&labelColor=0A0A0A" alt="Version" />
+&nbsp;
+<img src="https://img.shields.io/badge/PRs-WELCOME-7B5EA7?style=for-the-badge&labelColor=0A0A0A" alt="PRs Welcome" />
+
+<br /><br />
+
+# CONTRACTIQ\_
+
+### *The AI that reads your contracts so you don't have to.*
+
+**Upload. Analyse. Ask. Understand — in seconds.**
+
+<br />
+
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-►-C8FF00?style=for-the-badge&labelColor=0A0A0A)](https://contractiq.vercel.app)
+&nbsp;&nbsp;
+[![Report Bug](https://img.shields.io/badge/REPORT_BUG-◆-FF3333?style=for-the-badge&labelColor=0A0A0A)](../../issues)
+&nbsp;&nbsp;
+[![Request Feature](https://img.shields.io/badge/REQUEST_FEATURE-◈-7B5EA7?style=for-the-badge&labelColor=0A0A0A)](../../issues)
+
 </div>
 
 ---
 
-**ContractIQ** is a next-generation, AI-driven legal technology platform built with a striking Cyber Brutalism design language. It allows legal professionals, businesses, and individuals to instantly analyze complex contracts, automatically detect high-risk clauses, and engage in a natural language chat to uncover hidden liabilities.
+<br />
 
-Built with performance and security in mind, ContractIQ leverages state-of-the-art embedding models and LLMs to bring unparalleled intelligence to your legal workflow.
+## ◈ The Problem
 
-## 🚀 Key Features
+Legal contracts are designed to be read by lawyers, not people. A standard vendor agreement runs 40+ pages. A non-compete clause buried on page 32 can cost you years. An auto-renewal trap in paragraph 7 can cost you thousands.
 
-*   **Intelligent Contract Analysis:** Upload PDF contracts and receive an instant breakdown of clauses, key terms, and obligations.
-*   **Automated Risk Flagging:** Our AI scans for non-standard, aggressive, or high-risk clauses and highlights them with detailed explanations.
-*   **Context-Aware Legal Chat:** Chat directly with your contract. Ask questions like *"What are the termination conditions?"* and get precise answers backed by exact source clauses.
-*   **Semantic Search & RAG:** Built on `pgvector` and Gemini embeddings for lightning-fast, highly accurate retrieval-augmented generation.
-*   **Cyber Brutalism UI:** A stunning, high-contrast interface designed for maximum readability, speed, and aesthetic impact.
-*   **Full Dark/Light Mode Support:** Seamlessly switch between a clean light mode and a striking dark mode interface.
-*   **Fully Responsive:** Optimized for everything from ultrawide monitors to mobile devices.
-*   **Secure Authentication:** Enterprise-grade security with JWT and OTP verification.
+**ContractIQ changes that.**
 
----
+Upload any PDF contract. In under 60 seconds, our AI extracts every clause, scores risk levels, flags dangerous terms, and opens a natural language interface — so you can ask *"What happens if I terminate early?"* and get the exact answer, cited from the exact line.
 
-## 📸 Interface & Screenshots <a name="screenshots"></a>
+```
+  UPLOAD PDF  ──►  EXTRACT & CHUNK  ──►  EMBED VECTORS
+                                               ↓
+  CITED ANSWER  ◄──  GEMINI LLM  ◄──  SIMILARITY SEARCH
+```
 
-### System Overview (Light Mode vs. Dark Mode)
-Experience ContractIQ in your preferred aesthetic. Our themes are precision-engineered to maintain high contrast and readability across all lighting conditions.
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>Light Mode</b></td>
-      <td align="center"><b>Dark Mode</b></td>
-    </tr>
-    <tr>
-      <td><img width="853" height="1844" alt="Image" src="https://github.com/user-attachments/assets/81efb8f8-b27b-4325-aa2e-4d5e78597eb5" /></td>
-      <td><img width="853" height="1844" alt="Image" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
-    </tr>
-  </table>
-</div>
-
-### Mobile View (Responsive Design)
-Full power, zero compromises. Manage your contracts and chat with the AI on the go.
-
-<div align="center">
-  <!-- <img src="./docs/assets/mobile-view.png" alt="Mobile View" width="250"/> --> 
-  <br/>
-  <i>[Insert Mobile View Screenshot]</i>
-</div>
-
-### Major Features in Action
-
-#### 1. Contract Analysis & Risk Flagging
-Instantly identify severe liabilities before you sign.
-<div align="center">
-  <!-- <img src="./docs/assets/risk-analysis.png" alt="Risk Analysis" width="800"/> -->
-  <br/>
-  <i>[Insert Screenshot of the Risk Summary/Flags view]</i>
-</div>
-
-#### 2. Interactive Document Chat (RAG)
-Get answers cited directly from the text.
-<div align="center">
-  <!-- <img src="./docs/assets/chat-interface.png" alt="Chat Interface" width="800"/> -->
-  <br/>
-  <i>[Insert Screenshot of the Chat Interface with Source Clauses visible]</i>
-</div>
-
-#### 3. Secure File Upload & Processing
-Drag, drop, and process complex legal PDFs in seconds.
-<div align="center">
-  <!-- <img src="./docs/assets/upload.png" alt="Upload Interface" width="800"/> -->
-  <br/>
-  <i>[Insert Screenshot of the Upload/Drag-and-Drop view]</i>
-</div>
+<br />
 
 ---
 
-## 🛠 Architecture & Tech Stack <a name="architecture"></a>
+<br />
 
-ContractIQ is built using a modern, scalable microservices architecture:
+## ◈ Interface
 
-*   **Frontend:** Next.js 14 (App Router), React, Tailwind CSS, Lucide Icons.
-*   **Backend API:** Spring Boot (Java 17), Spring Security (JWT).
-*   **Database:** PostgreSQL with `pgvector` for vector similarity search.
-*   **AI/Embedding Service:** Python (FastAPI), PyPDF2, Gemini API for Embeddings.
-*   **LLM Provider:** Google Gemini Pro for advanced reasoning and chat generation.
-*   **Infrastructure:** Docker & Docker Compose for seamless local orchestration.
+<div align="center">
+
+### Light Mode &nbsp;·&nbsp; Dark Mode
+
+<table>
+  <tr>
+    <td align="center"><b>☀️ &nbsp; Light</b></td>
+    <td align="center"><b>🌑 &nbsp; Dark</b></td>
+  </tr>
+  <tr>
+    <td><img width="853" height="1844" alt="ContractIQ Light Mode" src="https://github.com/user-attachments/assets/81efb8f8-b27b-4325-aa2e-4d5e78597eb5" /></td>
+    <td><img width="853" height="1844" alt="ContractIQ Dark Mode" src="https://github.com/user-attachments/assets/ff17a8ce-cf64-448c-baa2-37592552ed15" /></td>
+  </tr>
+</table>
+
+*Both themes engineered for high contrast, maximum readability, and zero eye strain.*
+
+</div>
+
+<br />
 
 ---
 
-## 🏁 Getting Started <a name="getting-started"></a>
+<br />
+
+## ◈ Features
+
+<br />
+
+<table>
+<tr>
+<td width="50%">
+
+**📄 &nbsp; PDF Ingestion**
+Upload any contract PDF. Text is extracted, semantically chunked, and indexed. Every clause becomes searchable in seconds.
+
+</td>
+<td width="50%">
+
+**⚠️ &nbsp; Automated Risk Flagging**
+AI scans every clause for auto-renewal traps, uncapped liability, one-sided termination, IP ownership transfers, and non-compete overreach.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**💬 &nbsp; Natural Language Chat**
+Ask plain-English questions. *"What is the notice period?"* Get precise answers drawn directly from contract text — not hallucinated.
+
+</td>
+<td width="50%">
+
+**📌 &nbsp; Source Citations**
+Every answer shows the exact clause it came from. Verifiable. Trustworthy. No black-box answers.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**🔐 &nbsp; OTP Authentication**
+Email-verified registration with JWT stateless sessions. Secure from day one.
+
+</td>
+<td width="50%">
+
+**📊 &nbsp; Risk Dashboard**
+Organisation-wide risk overview. See your riskiest contracts ranked, flagged clauses broken down by severity, at a glance.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**🌓 &nbsp; Dark / Light Mode**
+Precision-engineered Cyber Brutalism themes. Switch with `Ctrl + Shift + L`. Your eyes, your choice.
+
+</td>
+<td width="50%">
+
+**📱 &nbsp; Fully Responsive**
+Built mobile-first. Optimised from ultrawide monitors to a 375px phone screen. Every pixel intentional.
+
+</td>
+</tr>
+</table>
+
+<br />
+
+---
+
+<br />
+
+## ◈ Tech Stack
+
+<br />
+
+<div align="center">
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Lenis |
+| **Backend** | Spring Boot 3.2 · Java 21 · Spring Security · JPA / Hibernate |
+| **AI Service** | Python 3.11 · FastAPI · PyMuPDF · Google Gemini Embeddings |
+| **Database** | PostgreSQL 17 · pgvector (768-dim vector search) |
+| **Auth** | JWT (stateless) · BCrypt · OTP via SMTP |
+| **Infrastructure** | Docker · Docker Compose · Railway · Vercel · Neon DB |
+
+</div>
+
+<br />
+
+---
+
+<br />
+
+## ◈ Architecture
+
+<br />
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                      Next.js Frontend                            │
+│              Cyber Brutalism · Dark/Light Mode                   │
+└────────────────────────────┬─────────────────────────────────────┘
+                             │  HTTPS + JWT Bearer Token
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                   Spring Boot Monolith                           │
+│                      localhost:8080                              │
+│                                                                  │
+│   ┌──────────────┐  ┌──────────────┐  ┌──────────────────────┐  │
+│   │ Auth Module  │  │Contract Mod  │  │    Chat Module       │  │
+│   │ OTP · JWT    │  │Upload · CRUD │  │  RAG Pipeline        │  │
+│   └──────────────┘  └──────────────┘  └──────────────────────┘  │
+│                              │                    │              │
+│                    ┌─────────────────┐            │              │
+│                    │  Risk Module    │            │              │
+│                    │  AI Analysis    │            │              │
+│                    └─────────────────┘            │              │
+└──────────────────────────┬───────────────────────┬──────────────┘
+                           │                       │
+              HTTP REST    │                       │  JPA / pgvector
+                           ▼                       ▼
+          ┌─────────────────────┐   ┌──────────────────────────────┐
+          │  Python FastAPI      │   │   PostgreSQL 17 + pgvector   │
+          │  Embedding Service  │   │                              │
+          │  localhost:8000     │   │  users · contracts · clauses │
+          │                     │   │  vector(768) · chat_messages │
+          │  PyMuPDF → chunks   │──►│                              │
+          │  Gemini Embeddings  │   │  <=> cosine similarity ops   │
+          └─────────────────────┘   └──────────────────────────────┘
+```
+
+<br />
+
+---
+
+<br />
+
+## ◈ Getting Started
+
+<br />
 
 ### Prerequisites
-*   Node.js 18+
-*   Java 17+
-*   Docker Desktop
-*   Google Gemini API Key
 
-### Installation
+```bash
+java --version    # JDK 21+
+docker --version  # Docker Desktop
+node --version    # Node.js 20+
+python --version  # Python 3.11+
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/contractiq.git
-    cd contractiq
-    ```
+<br />
 
-2.  **Start the Database and Embedding Service:**
-    Provide your Gemini API key in the environment or `.env` file, then run:
-    ```bash
-    docker compose up -d
-    ```
+### 1 · Clone the repository
 
-3.  **Start the Spring Boot Backend:**
-    Update your `application.properties` with database and mail credentials, then run:
-    ```bash
-    cd backend/backend
-    ./mvnw spring-boot:run
-    ```
+```bash
+git clone https://github.com/YOUR_USERNAME/contractiq.git
+cd contractiq
+```
 
-4.  **Start the Next.js Frontend:**
-    ```bash
-    cd frontend
-    npm install
-    npm run dev
-    ```
+<br />
 
-5.  **Access the Application:**
-    Navigate to `http://localhost:3000` in your browser.
+### 2 · Set environment variables
+
+Create `.env` at project root:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Create `backend/src/main/resources/application.properties`:
+
+```properties
+server.port=8080
+spring.application.name=contractiq-backend
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/contractiq_db
+spring.datasource.username=dev
+spring.datasource.password=dev123
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+jwt.secret=your-jwt-secret-min-32-chars
+jwt.expiration=86400000
+
+embedding.service.url=http://localhost:8000
+gemini.api.key=your_gemini_api_key_here
+gemini.model=gemini-2.0-flash
+gemini.api.url=https://generativelanguage.googleapis.com/v1beta/models
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your_gmail@gmail.com
+spring.mail.password=your_gmail_app_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+otp.expiry.minutes=10
+spring.servlet.multipart.max-file-size=20MB
+spring.servlet.multipart.max-request-size=20MB
+```
+
+Create `frontend/.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+```
+
+<br />
+
+### 3 · Start infrastructure
+
+```bash
+# start PostgreSQL + Python embedding service
+docker compose up -d
+
+# verify both are healthy
+docker compose ps
+```
+
+> **First run only** — connect to `contractiq_db` and enable pgvector:
+> ```sql
+> CREATE EXTENSION IF NOT EXISTS vector;
+> ```
+
+<br />
+
+### 4 · Start the backend
+
+```bash
+cd backend
+./mvnw spring-boot:run
+# starts at http://localhost:8080
+```
+
+<br />
+
+### 5 · Start the frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+# starts at http://localhost:3000
+```
+
+<br />
+
+### 6 · Verify everything is running
+
+```bash
+curl http://localhost:8000/health    # embedding service
+curl http://localhost:8080/actuator/health  # spring boot
+```
+
+Open `http://localhost:3000` — register, verify OTP, upload a contract.
+
+<br />
 
 ---
 
+<br />
+
+## ◈ Deployment
+
+<br />
+
+| Service | Platform | Notes |
+|---------|----------|-------|
+| Spring Boot | [Railway](https://railway.app) | Set env vars in Railway dashboard · auto-detects Maven |
+| Embedding Service | [Railway](https://railway.app) | Deploy from `embedding-service/` directory |
+| Frontend | [Vercel](https://vercel.com) | Connect GitHub · set `NEXT_PUBLIC_API_URL` |
+| Database | [Neon DB](https://neon.tech) | Enable pgvector extension post-creation |
+
+> **Pro tip** — Use [UptimeRobot](https://uptimerobot.com) to ping `/actuator/health` every 5 minutes on Railway free tier. Eliminates cold start delays during demos.
+
+<br />
+
+---
+
+<br />
+
+## ◈ Project Structure
+
+<br />
+
+```
+contractiq/
+│
+├── backend/                           # Spring Boot monolith
+│   └── src/main/java/com/contractiq/
+│       ├── model/                     # JPA entities
+│       ├── dto/                       # Request / response objects
+│       ├── repository/                # Data access layer
+│       ├── service/
+│       │   ├── AuthService.java       # OTP + JWT auth
+│       │   ├── ContractService.java   # Upload + CRUD
+│       │   ├── ChatService.java       # RAG pipeline
+│       │   ├── RiskFlagService.java   # AI clause analysis
+│       │   ├── OtpService.java
+│       │   └── EmailService.java
+│       ├── controller/                # REST endpoints
+│       ├── client/
+│       │   ├── EmbeddingClient.java   # → Python service
+│       │   └── GeminiClient.java      # → Gemini LLM
+│       └── config/                    # Security · JWT · CORS
+│
+├── embedding-service/                 # Python FastAPI microservice
+│   ├── main.py                        # PDF extract + chunk + embed
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend/                          # Next.js 14 application
+│   └── src/
+│       ├── app/                       # App Router pages
+│       ├── components/                # UI component library
+│       ├── lib/                       # Axios + utilities
+│       ├── hooks/                     # Custom React hooks
+│       ├── context/                   # Auth context
+│       └── types/                     # TypeScript interfaces
+│
+├── docker-compose.yml                 # DB + embedding service
+└── .env                               # Root env (gitignored)
+```
+
+<br />
+
+---
+
+<br />
+
+## ◈ Roadmap
+
+<br />
+
+- [x] OTP email verification flow
+- [x] PDF ingestion + vector pipeline
+- [x] pgvector semantic similarity search
+- [x] RAG chat with source citations
+- [x] AI risk clause detection + scoring
+- [x] Cyber Brutalism UI with dark/light mode
+- [x] Fully responsive across all devices
+- [ ] Multi-language contract support
+- [ ] Batch upload processing
+- [ ] Redis caching for analytics results
+- [ ] API Gateway with rate limiting
+- [ ] Webhook alerts on high-risk detection
+- [ ] Mobile application (React Native)
+
+<br />
+
+---
+
+<br />
+
+
+
+
 <div align="center">
-  <p>Built with precision by the ContractIQ Team.</p>
+
+```
+● CONNECTION SECURE  ·  > ENCRYPTION: AES-256  ·  NODE: CONTRACTIQ_01  ·  ACCESS GRANTED_
+```
+
+<br />
+
+**ContractIQ** — *Built with precision. Designed to protect.*
+
+<br />
+
+⭐ &nbsp; **If ContractIQ saved you from a bad clause, star this repo.**
+
 </div>
