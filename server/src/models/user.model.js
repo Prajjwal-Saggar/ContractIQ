@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-    },
+    }
   },
   {
     timestamps: true,
@@ -34,7 +34,7 @@ userSchema.pre("save", async function () {
   try {
     this.password = await bcrypt.hash(this.password, 10);
   } catch (error) {
-    throw new AppError("Something went wrong. Please try again later.", 500, error);
+    throw new AppError("Failed to hash password. Please try again later.", 500, error);
   }
 });
 

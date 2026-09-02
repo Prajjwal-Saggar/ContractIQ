@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser")
 const authRouter = require("./routes/authRoutes");
+const docRouter = require("./routes/doc.route");
 
 const app = express();
 app.use(cookieParser())
@@ -9,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/v0/auth", authRouter);
-
+app.use("/api/v0/docs" , docRouter)
 
 //global error handling 
 app.use((err, req, res, next) => {

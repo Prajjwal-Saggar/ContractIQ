@@ -9,7 +9,7 @@ const createNewUser = async ({ username, email, password }) => {
       const field = Object.keys(error.keyPattern)[0];
       throw new AppError(`An account with this ${field} already exists.`, 409);
     }
-    throw new AppError("Unable to create your account right now. Please try again.", 500, error);
+    throw new AppError("Failed to create account. Please try again later.", 500, error);
   }
 };
 
@@ -17,7 +17,7 @@ const getLoggedInUser = async ({ email, password }) => {
   try {
     const loggedInUser = await User.findOne({ email });
     if (!loggedInUser) {
-      throw new AppError("No account found with this email.", 401);
+      throw new AppError("No account found with this email.", 404);
     }
 
     //match the password

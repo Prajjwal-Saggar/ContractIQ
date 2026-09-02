@@ -52,10 +52,13 @@ const loginUser = async (req, res, next) => {
 
 const logoutUser = async (req, res, next) => {
   try {
+    if (!req.cookies.token) {
+      return res.status(400).json({ message: "Cannot Logout" });
+    }
     res.clearCookie("token");
-    res.status(200).json({ message: "Logout Successfull" });
+    return res.status(200).json({ message: "Logout successful" });
   } catch (error) {
-    next(new AppError("Unable to log out right now. Please try again.", 500, error));
+    next(new AppError("Failed to logout. Please try again.", 500, error));
   }
 };
 
