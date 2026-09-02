@@ -1,31 +1,36 @@
-# Java
-target/
-*.class
-*.jar
-
-# Secrets
-.env
-application.properties
-embedding-service/.env
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
-
-# Node
+# Dependencies
 node_modules/
-.next/
-dist/
 
-# IDE
-.idea/
-*.iml
-.vscode/
+# Environment files
+.env
+.env.*
+!.env.example
 
-# OS
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build output
+/dist/
+/build/
+/.cache/
+
+# OS/editor files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 
-# Uploads (contract PDFs should not go to git)
-uploads/
+# Optional: local database dumps or temp files
+*.sqlite
+*.sqlite3
+*.tmp

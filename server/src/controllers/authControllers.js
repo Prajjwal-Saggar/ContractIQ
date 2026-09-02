@@ -1,10 +1,11 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-const { createNewUser, getLoggedInUser } = require("../services/userService");
+const { createNewUser, getLoggedInUser , getCurrentUser } = require("../services/userService");
 const AppError = require("../utils/appError");
 
 const jwt = require("jsonwebtoken");
+const User = require("../models/user.model");
 
 /*
 Stuff left to add in the Register
@@ -62,4 +63,20 @@ const logoutUser = async (req, res, next) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser };
+const getMe = async (req,res,next) => {
+  try {
+    const userId = req.userId;
+
+    if(!userId){
+      return res.status(401).json({message:"Please Login"})
+    }
+
+    const user = await getCurrentUser(userId);
+    
+    return res.status(200).json({user})
+  } catch (error) {
+    next(error)
+  }
+}
+
+module.exports = { registerUser, loginUser, logoutUser,getMe };

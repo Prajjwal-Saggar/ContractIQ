@@ -9,7 +9,11 @@ const createNewUser = async ({ username, email, password }) => {
       const field = Object.keys(error.keyPattern)[0];
       throw new AppError(`An account with this ${field} already exists.`, 409);
     }
-    throw new AppError("Failed to create account. Please try again later.", 500, error);
+    throw new AppError(
+      "Failed to create account. Please try again later.",
+      500,
+      error,
+    );
   }
 };
 
@@ -33,4 +37,12 @@ const getLoggedInUser = async ({ email, password }) => {
   }
 };
 
-module.exports = { createNewUser, getLoggedInUser };
+const getCurrentUser = async (userId) => {
+  try {
+    const user = await User.findById(userId).select("-password");
+    return user;
+  } catch (error) {
+    throw new AppError("Error Fetching User", 500, error);
+  }
+};
+module.exports = { createNewUser, getLoggedInUser, getCurrentUser };
