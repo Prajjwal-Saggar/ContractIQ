@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@font-face {
+  font-family: 'Molgan';
+  src: url('./assets/fonts/MolganRegular-YqWj2.otf') format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme{
+    --font-molgan:"Molgan" ,sans-serif;
+}
+
+@theme {
+  /* Surface / Background Colors */
+  --color-ink: #0B0E14;
+  --color-slate: #141A28;
+  --color-steel: #1F2637;
+
+  /* Typography Colors */
+  --color-paper: #E7E9F0;
+  --color-fog: #8891A5;
+
+  /* Accent & Status Colors */
+  --color-evidence: #E0A039;
+  --color-verified: #2FA98C;
+  --color-flag: #D6564A;
+}
